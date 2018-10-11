@@ -1,0 +1,31 @@
+{
+  "name": "@aabenoja/axe-jest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "jest": {
+    "setupFiles": [
+      "./jest-config.js"
+    ],
+    "testURL": "http://localhost"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-export-default-from": "^7.0.0",
+    "axe-core": "^3.1.2",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "babel-preset-wtw-im": "^2.1.0",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
+    "jest": "^23.6.0",
+    "jest-cli": "^23.6.0",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
+  }
+}
