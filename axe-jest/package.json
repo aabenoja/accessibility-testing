@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "jest": {
-    "setupFiles": [
-      "./jest-config.js"
-    ],
+    "setupTestFrameworkScriptFile": "<rootDir>jest-config.js",
     "testURL": "http://localhost"
   },
   "scripts": {
@@ -21,11 +19,12 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "babel-preset-wtw-im": "^2.1.0",
-    "enzyme": "^3.7.0",
-    "enzyme-adapter-react-16": "^1.6.0",
     "jest": "^23.6.0",
+    "jest-axe": "^3.1.0",
     "jest-cli": "^23.6.0",
+    "jest-dom": "^2.1.1",
     "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react-dom": "^16.5.2",
+    "react-testing-library": "^5.2.3"
   }
 }
