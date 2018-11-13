@@ -1,8 +1,8 @@
 import React from 'react';
+import axe from 'axe-core';
+import { toHaveNoViolations } from 'jest-axe';
 import ReactDOMServer from 'react-dom/server';
-import {axe, toHaveNoViolations} from 'jest-axe';
-import {prettyDOM} from 'dom-testing-library';
-import { render, cleanup } from 'react-testing-library';
+import { render, cleanup, prettyDOM } from 'react-testing-library';
 import Link from '../Link';
 
 expect.extend(toHaveNoViolations);
@@ -14,24 +14,32 @@ const config = {
   }
 };
 
-async function testAccessibility(element) {
-
-  const body = prettyDOM(document.body);
-  console.log(`body is: ${body}`);
+async function testAccessibility(container) {
+  const body = prettyDOM(container.innerHTML);
   const results = await axe(body, config);
   return results;
 }
 
-afterEach(cleanup);
+const Img = props => <img {...props} />;
+const runAxe = () => new Promise((resolve, reject) => {
+  axe.run(document.body, config, (err, results) => {
+    err ? reject(err) : resolve(results);
+  });
+});
 
-test('has no aXe violations', async () => {
-  const instance = render(
-    <Link>aXe website</Link>
-  );
-  const results = await testAccessibility(instance);
+beforeEach(cleanup);
+
+afterEach(async () => {
+  const results = await runAxe();
   expect(results).toHaveNoViolations();
 });
 
-test('another test', async () => {
-  expect(await axe(`<img src="#"/>`)).toHaveNoViolations();
+test('has no aXe violations', () => {
+  const {container} = render(
+    <Link>aXe website</Link>
+  );
+});
+
+test('another test', () => {
+  const {container} = render(<Img src="#"/>);
 });

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "jest": {
-    "setupTestFrameworkScriptFile": "<rootDir>jest-config.js",
+    "setupTestFrameworkScriptFile": "<rootDir>/jest-config.js",
     "testURL": "http://localhost"
   },
   "scripts": {
